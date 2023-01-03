@@ -1,5 +1,7 @@
 # cypress-testrail-integration
 
+<a href="https://www.npmjs.com/package/cypress-testrail-integration"><img src="https://static.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png"></a> <a href="https://github.com/Smoliarick/cypress-testrail-integration"><img src="https://github.githubassets.com/favicons/favicon.png" style="background: white"></a>
+
 This package helps to create a new Test Run in Test Rail with results from Cypress Run.
 
 ## Installation
@@ -145,6 +147,28 @@ setupNodeEvents(on, config) {
       testRunName = 'New Test Run' // adding a new name for Test Run
     );
     await testrailIntegration.addResultsToTestRailTestRun(results);
+  });
+  return config;
+},
+```
+
+## Using created Test Run for results
+
+If you want to use created Test Run in Test Rail for adding results, you can add it's ID into the `addResultsToTestRailTestRun` method. Example:
+
+```js
+setupNodeEvents(on, config) {
+  on('after:run', async (results) => {   
+    const TestrailIntegration = require('cypress-testrail-integration');
+    const testrailIntegration = new TestrailIntegration(
+      process.env.TESTRAIL_USERNAME,
+      process.env.TESTRAIL_PASSWORD,
+      process.env.TESTRAIL_HOSTNAME,
+      process.env.TESTRAIL_PROJECT_ID
+    );
+
+    // 25 is ID for existed Test Rail Test Run
+    await testrailIntegration.addResultsToTestRailTestRun(results, runId = 25);
   });
   return config;
 },
