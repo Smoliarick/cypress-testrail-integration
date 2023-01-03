@@ -1,8 +1,20 @@
-# cypress-testrail-integration
+<h1>cypress-testrail-integration</h1>
 
 <a href="https://www.npmjs.com/package/cypress-testrail-integration"><img src="https://static.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png"></a> <a href="https://github.com/Smoliarick/cypress-testrail-integration"><img src="https://github.githubassets.com/favicons/favicon.png" style="background: white"></a>
 
 This package helps to create a new Test Run in Test Rail with results from Cypress Run.
+
+<h1>Content</h1>
+
+- [Installation](#installation)
+- [Add package into `cypress.config.js` file](#add-package-into-cypressconfigjs-file)
+- [Update titles for autotests using template](#update-titles-for-autotests-using-template)
+- [Running code](#running-code)
+- [Your own parser and titles for autotests](#your-own-parser-and-titles-for-autotests)
+- [Your own name for Test Rail Test Runs](#your-own-name-for-test-rail-test-runs)
+- [Using created Test Run for results](#using-created-test-run-for-results)
+- [Example](#example)
+
 
 ## Installation
 
