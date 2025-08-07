@@ -1,6 +1,6 @@
 <h1>cypress-testrail-integration</h1>
 
-<a href="https://www.npmjs.com/package/cypress-testrail-integration"><img src="https://static.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png"></a> <a href="https://github.com/Smoliarick/cypress-testrail-integration"><img src="https://github.githubassets.com/favicons/favicon.png" style="background: white"></a>
+<a href="https://github.com/Smoliarick/cypress-testrail-integration"><img src="https://github.githubassets.com/favicons/favicon.png" style="background: white"></a>
 
 This package helps to create a new Test Run in Test Rail with results from Cypress Run.
 
@@ -16,7 +16,6 @@ This package helps to create a new Test Run in Test Rail with results from Cypre
 - [Your own name for Test Rail Test Runs](#your-own-name-for-test-rail-test-runs)
 - [Using created Test Run for results](#using-created-test-run-for-results)
 - [Example](#example)
-
 
 ## Installation
 
@@ -41,29 +40,29 @@ TESTRAIL_PROJECT_ID=your_testrail_project_id
 Full code:
 
 ```js
-const { defineConfig } = require('cypress');
+const { defineConfig } = require("cypress");
 
-require('dotenv').config();
+require("dotenv").config();
 
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      on('after:run', async (results) => {
+      on("after:run", async (results) => {
         // Export package
-        const TestrailIntegration = require('cypress-testrail-integration');
+        const TestrailIntegration = require("cypress-testrail-integration");
         // Create a new object with Test Rail credentials and data
         const testrailIntegration = new TestrailIntegration(
           process.env.TESTRAIL_USERNAME, // Test Rail username
           process.env.TESTRAIL_PASSWORD, // Test Rail password
           process.env.TESTRAIL_HOSTNAME, // Test Rail hostname
-          process.env.TESTRAIL_PROJECT_ID, // Test Rail project_id
+          process.env.TESTRAIL_PROJECT_ID // Test Rail project_id
         );
         // Create a new Test Run in Test Rail and add results from Cypress Run
         await testrailIntegration.addResultsToTestRailTestRun(results);
       });
       return config;
     },
-    specPattern: 'cypress/e2e/**/*.spec.{js, jsx, ts, tsx}',
+    specPattern: "cypress/e2e/**/*.spec.{js, jsx, ts, tsx}",
   },
 });
 ```
@@ -73,7 +72,7 @@ module.exports = defineConfig({
 Update titles for your autotests using this template:
 
 ```js
-it('[Test Case IDs with any first letter]: [Autotest\'s title]', () => {
+it("[Test Case IDs with any first letter]: [Autotest's title]", () => {
   // autotest
 });
 ```
@@ -81,13 +80,13 @@ it('[Test Case IDs with any first letter]: [Autotest\'s title]', () => {
 Example:
 
 ```js
-it('C1, C2: Verify that google page has input field', () => {
+it("C1, C2: Verify that google page has input field", () => {
   // autotest
 });
 ```
 
 ```js
-it('C3: Verify that google page doesn\'t have input field ', () => {
+it("C3: Verify that google page doesn't have input field ", () => {
   // autotest
 });
 ```
@@ -126,7 +125,7 @@ setupNodeEvents(on, config) {
         .map((element) => element = element.trim().substring(1));
       return testCaseIds;
     }
-        
+
     const TestrailIntegration = require('cypress-testrail-integration');
     const testrailIntegration = new TestrailIntegration(
       process.env.TESTRAIL_USERNAME,
@@ -151,7 +150,7 @@ If you want to add a new name for Test Rail Test Run, add it into the constructo
 
 ```js
 setupNodeEvents(on, config) {
-  on('after:run', async (results) => {   
+  on('after:run', async (results) => {
     const TestrailIntegration = require('cypress-testrail-integration');
     const testrailIntegration = new TestrailIntegration(
       process.env.TESTRAIL_USERNAME,
@@ -172,7 +171,7 @@ If you want to use created Test Run in Test Rail for adding results, you can add
 
 ```js
 setupNodeEvents(on, config) {
-  on('after:run', async (results) => {   
+  on('after:run', async (results) => {
     const TestrailIntegration = require('cypress-testrail-integration');
     const testrailIntegration = new TestrailIntegration(
       process.env.TESTRAIL_USERNAME,
