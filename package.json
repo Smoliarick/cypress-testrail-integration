@@ -1,6 +1,6 @@
 {
   "name": "cypress-testrail-integration",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "TestRail integration for Cypress autotests",
   "main": "index.js",
   "repository": {
